@@ -1,0 +1,39 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activemodel (3.0.6)
+      activesupport (= 3.0.6)
+      builder (~> 2.1.2)
+      i18n (~> 0.5.0)
+    activesupport (3.0.6)
+    api_cache (0.2.3)
+    bson (1.3.0)
+    builder (2.1.2)
+    crack (0.1.8)
+    httparty (0.7.4)
+      crack (= 0.1.8)
+    i18n (0.5.0)
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
+    mongo (1.3.0)
+      bson (>= 1.3.0)
+    mongoid (2.0.1)
+      activemodel (~> 3.0)
+      mongo (~> 1.3)
+      tzinfo (~> 0.3.22)
+      will_paginate (~> 3.0.pre)
+    nokogiri (1.4.4)
+    octopi (0.4.0)
+      api_cache
+      httparty (>= 0.4.5)
+      mechanize (>= 0.9.3)
+      nokogiri (>= 1.3.1)
+    tzinfo (0.3.26)
+    will_paginate (3.0.pre2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mongoid
+  octopi
