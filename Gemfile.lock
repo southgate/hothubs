@@ -35,5 +35,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  httparty
   mongoid
   octopi
