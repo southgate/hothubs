@@ -8,8 +8,10 @@ GEM
     activesupport (3.0.6)
     api_cache (0.2.3)
     bson (1.3.0)
+    bson_ext (1.3.0)
     builder (2.1.2)
     crack (0.1.8)
+    diff-lcs (1.1.2)
     httparty (0.7.4)
       crack (= 0.1.8)
     i18n (0.5.0)
@@ -28,6 +30,14 @@ GEM
       httparty (>= 0.4.5)
       mechanize (>= 0.9.3)
       nokogiri (>= 1.3.1)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
     tzinfo (0.3.26)
     will_paginate (3.0.pre2)
 
@@ -35,6 +45,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bson_ext
   httparty
   mongoid
   octopi
+  rspec
