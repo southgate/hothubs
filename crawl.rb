@@ -28,15 +28,26 @@ class GitHub
       URI::Parser.new(:UNRESERVED=>URI::PATTERN::UNRESERVED+'\[\]')
     end
 
-    def repos(term, page = 1)
-      uri = GitHub::REPOS_URI + "/#{URI.encode(term)}?start_page=#{page}"
-      response = GitHub.get(uri)
+    def paginate(uri, response_key, storage, page=1)
+      response = GitHub.get(uri + "?start_page=#{page}")
       parsed = JSON.parse(response.body)
-      parsed['repositories'] if parsed.has_key? 'repositories'
+      if parsed
+        entries = parsed[response_key]
+        unless entries.empty? || entries.nil?
+          puts "writing #{entries.size}"
+          entries.each { |entry| storage.write(entry.to_json + "\n") }
+          storage.flush
+          paginate(uri, response_key, storage, page + 1)
+        end
+      end
+    end
+
+    def crawl_repos(term)
+      uri = GitHub::REPOS_URI + "/#{URI.encode(term)}"
+      paginate(uri, 'repositories', open("repos.json", "w+"))
     end
   end
 end
 
 
-repos = GitHub.repos("followers:[5 TO 100]")
-pp repos.map { |repo| repo['name'] }
+GitHub.crawl_repos("followers:[5 TO 100]")
